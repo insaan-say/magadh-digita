@@ -21,3 +21,8 @@ pnpm-debug.log*
 .DS_Store
 *.pem
 verification
+node_modules
+.next
+dist
+build
+.env

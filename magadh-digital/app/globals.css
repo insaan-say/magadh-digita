@@ -130,33 +130,6 @@ body {
   }
 }
 
-.cursor-aura {
-  pointer-events: none;
-  position: fixed;
-  z-index: 80;
-  width: 22rem;
-  height: 22rem;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle, rgba(35, 213, 255, 0.16), transparent 44%),
-    radial-gradient(circle, rgba(255, 90, 31, 0.11), transparent 58%);
-  filter: blur(14px);
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-}
-
-.cursor-core {
-  pointer-events: none;
-  position: fixed;
-  z-index: 90;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: #fff;
-  box-shadow: 0 0 24px rgba(35, 213, 255, 0.8);
-  transform: translate(-50%, -50%);
-}
-
 .smoke-layer {
   position: absolute;
   inset: auto -10% -20% -10%;
@@ -167,23 +140,6 @@ body {
     radial-gradient(ellipse at 74% 58%, rgba(255, 90, 31, 0.1), transparent 32%);
   filter: blur(34px);
   opacity: 0.8;
-  animation: smoke-drift 14s ease-in-out infinite alternate;
-}
-
-@keyframes smoke-drift {
-  from {
-    transform: translate3d(-2%, 2%, 0) scale(1);
-  }
-  to {
-    transform: translate3d(3%, -3%, 0) scale(1.08);
-  }
-}
-
-@media (pointer: coarse) {
-  .cursor-aura,
-  .cursor-core {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

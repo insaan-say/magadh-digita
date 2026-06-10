@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { contactLinks, navLinks } from "@/lib/data";
+import { navLinks } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -31,11 +30,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.header
+    <header
       className="fixed left-0 right-0 top-0 z-50 px-3 pt-3 md:px-6 md:pt-5"
-      initial={{ y: -90, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border border-white/10 bg-black/45 px-3 shadow-2xl shadow-black/30 backdrop-blur-2xl md:px-5">
         <a href="#home" className="flex items-center gap-3">
@@ -65,11 +61,7 @@ export function Navbar() {
               )}
             >
               {active === link.href ? (
-                <motion.span
-                  layoutId="active-nav"
-                  className="absolute inset-0 rounded-full bg-white"
-                  transition={{ type: "spring", stiffness: 350, damping: 32 }}
-                />
+                <span className="absolute inset-0 rounded-full bg-white" />
               ) : null}
               <span className="relative z-10">{link.label}</span>
             </a>
@@ -77,9 +69,7 @@ export function Navbar() {
         </div>
 
         <a
-          href={contactLinks.whatsapp}
-          target="_blank"
-          rel="noreferrer"
+          href="#contact"
           className="hidden rounded-full border border-orange/40 bg-orange/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-orange transition hover:bg-orange hover:text-white md:inline-flex"
         >
           Start Project
@@ -95,27 +85,20 @@ export function Navbar() {
         </button>
       </nav>
 
-      <AnimatePresence>
-        {open ? (
-          <motion.div
-            className="mx-auto mt-3 max-w-6xl overflow-hidden rounded-[28px] border border-white/10 bg-black/86 p-3 shadow-2xl backdrop-blur-2xl md:hidden"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white/72 transition hover:bg-white/10 hover:text-white"
-              >
-                {link.label}
-              </a>
-            ))}
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </motion.header>
+      {open ? (
+        <div className="mx-auto mt-3 max-w-6xl overflow-hidden rounded-[28px] border border-white/10 bg-black/86 p-3 shadow-2xl backdrop-blur-2xl md:hidden">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="block rounded-2xl px-4 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white/72 transition hover:bg-white/10 hover:text-white"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
+    </header>
   );
 }

@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { OFFICIAL_CONTACT } from "@/constants/contact";
 import {
   Brush,
   Camera,
@@ -240,10 +241,5 @@ export const capabilities = [
 ];
 
 export const contactLinks = {
-  phone: "+91 6280200778",
-  phoneHref: "tel:+916280200778",
-  email: "magadhdigitalsolutions@gmail.com",
-  mailto: "mailto:magadhdigitalsolutions@gmail.com",
-  whatsapp: "https://wa.me/916280200778",
-  instagram: "https://www.instagram.com/magadhdigital/"
+  ...OFFICIAL_CONTACT
 };

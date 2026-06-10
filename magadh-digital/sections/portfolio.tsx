@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
 import { useMemo, useState } from "react";
-import { Mail, MessageCircle, Phone, Play } from "lucide-react";
+import { Play, Send } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -11,10 +10,9 @@ import {
   DialogHeader,
   DialogTitle
 } from "@/components/ui/dialog";
-import { MagneticButton } from "@/components/magnetic-button";
-import { SectionHeading } from "@/components/section-heading";
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import { SectionHeading } from "@/components/ui/section-heading";
 import {
-  contactLinks,
   portfolioCategories,
   portfolioProjects,
   type PortfolioCategory,
@@ -103,20 +101,11 @@ function ProjectModal({
 
               <div className="mt-8 flex flex-wrap gap-3 border-t border-white/10 pt-6">
                 <a
-                  href={contactLinks.whatsapp}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#contact"
                   className="inline-flex h-11 items-center gap-2 rounded-full bg-white px-5 text-xs font-bold uppercase tracking-[0.12em] text-black transition hover:bg-electric"
                 >
-                  <MessageCircle className="h-4 w-4" />
-                  Discuss Project
-                </a>
-                <a
-                  href={contactLinks.mailto}
-                  className="inline-flex h-11 items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-orange/60 hover:bg-orange/10"
-                >
-                  <Mail className="h-4 w-4" />
-                  Email Brief
+                  <Send className="h-4 w-4" />
+                  Submit Inquiry
                 </a>
               </div>
             </div>
@@ -143,7 +132,7 @@ export function PortfolioSection() {
     <section
       ref={scope}
       id="portfolio"
-      className="relative overflow-hidden bg-[#070707] py-28 md:py-36"
+      className="relative overflow-hidden bg-[#070707] py-24 md:py-32"
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_0%,rgba(255,90,31,0.12),transparent_28rem),radial-gradient(circle_at_0%_30%,rgba(35,213,255,0.09),transparent_24rem)]" />
       <div className="section-shell">
@@ -177,36 +166,22 @@ export function PortfolioSection() {
         </div>
 
         <div className="mt-9 flex flex-wrap gap-3" data-reveal>
-          <MagneticButton
-            href={contactLinks.whatsapp}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Discuss Project
+          <MagneticButton href="#contact">
+            Submit Inquiry
           </MagneticButton>
-          <MagneticButton href={contactLinks.mailto} variant="outline">
-            Email Portfolio Brief
-          </MagneticButton>
-          <MagneticButton href={contactLinks.phoneHref} variant="outline">
-            <Phone className="h-4 w-4" />
-            Call Now
+          <MagneticButton href="#services" variant="outline">
+            Explore Services
           </MagneticButton>
         </div>
 
         <div className="masonry mt-14">
-          <AnimatePresence mode="popLayout">
-            {projects.map((project, index) => (
-              <motion.button
-                key={project.title}
-                layout
-                type="button"
-                className="masonry-item group block w-full text-left"
-                initial={{ opacity: 0, y: 38, filter: "blur(12px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.96, filter: "blur(12px)" }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                onClick={() => setSelectedProject(project)}
-              >
+          {projects.map((project, index) => (
+            <button
+              key={project.title}
+              type="button"
+              className="masonry-item group block w-full text-left"
+              onClick={() => setSelectedProject(project)}
+            >
                 <div
                   className={cn(
                     "relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04]",
@@ -222,7 +197,6 @@ export function PortfolioSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/12 to-transparent" />
                   <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
-                    <div className="absolute inset-x-0 top-0 h-24 animate-scanline bg-gradient-to-b from-electric/18 to-transparent" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.18),transparent_22rem)]" />
                   </div>
                   <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/15 bg-black/42 px-3 py-2 text-xs uppercase tracking-[0.16em] text-white/70 backdrop-blur-xl">
@@ -233,15 +207,14 @@ export function PortfolioSection() {
                     <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-orange">
                       {project.category}
                     </p>
-                    <h3 className="mt-2 text-2xl font-semibold leading-tight text-white">
+                    <h3 className="mt-2 text-xl font-semibold leading-tight text-white md:text-2xl">
                       {project.title}
                     </h3>
                     <p className="mt-2 text-sm text-white/58">{project.client}</p>
                   </div>
                 </div>
-              </motion.button>
-            ))}
-          </AnimatePresence>
+            </button>
+          ))}
         </div>
 
       </div>

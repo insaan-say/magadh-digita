@@ -36,25 +36,6 @@ const config: Config = {
       backgroundImage: {
         "radial-grid":
           "radial-gradient(circle at 50% 0%, rgba(35,213,255,0.12), transparent 32%), radial-gradient(circle at 82% 20%, rgba(255,90,31,0.14), transparent 28%), radial-gradient(circle at 20% 80%, rgba(139,92,246,0.16), transparent 26%)"
-      },
-      keyframes: {
-        aurora: {
-          "0%, 100%": { transform: "translate3d(-2%, 0, 0) rotate(0deg)" },
-          "50%": { transform: "translate3d(2%, -2%, 0) rotate(1deg)" }
-        },
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" }
-        },
-        scanline: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" }
-        }
-      },
-      animation: {
-        aurora: "aurora 11s ease-in-out infinite",
-        marquee: "marquee 26s linear infinite",
-        scanline: "scanline 6s linear infinite"
       }
     }
   },

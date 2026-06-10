@@ -16,14 +16,14 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn("max-w-3xl", className)} data-reveal>
-      <p className="mb-4 font-mono text-xs uppercase tracking-[0.34em] text-orange">
+      <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.28em] text-orange">
         {eyebrow}
       </p>
-      <h2 className="text-balance text-4xl font-semibold leading-[0.98] tracking-normal text-white md:text-6xl lg:text-7xl">
+      <h2 className="text-balance text-3xl font-semibold leading-[1.04] tracking-normal text-white md:text-5xl lg:text-6xl">
         {title}
       </h2>
       {copy ? (
-        <p className="mt-6 max-w-2xl text-base leading-7 text-white/62 md:text-lg">
+        <p className="mt-5 max-w-2xl text-sm leading-6 text-white/62 md:text-base md:leading-7">
           {copy}
         </p>
       ) : null}
